@@ -21,7 +21,9 @@ ROOT = /home/[USERNAME]/sites/[DOMAINNAME]
     mkdir -p [DOMAINNAME]
     cd [DOMAINNAME]
     mkdir -p log
+    chmod 777 log
     mkdir -p media
+    chmod 777 media
     mkdir -p src
     mkdir -p static
 
@@ -67,11 +69,11 @@ ROOT = /home/[USERNAME]/sites/[DOMAINNAME]
 
 1.8 Setting up Apache server to work with django-project
 
-    sudo cp _deploy/apache.template /etc/apache2/sites-available/[DOMAINNAME]
-    sudo nano /etc/apache2/sites-available/[DOMAINNAME]
-    *fill [VALUE]
+    sudo cp _deploy/apache.conf.template /etc/apache2/sites-available/[DOMAINNAME].conf
+    sudo nano /etc/apache2/sites-available/[DOMAINNAME].conf
+    *fill [VALUES]
 
-    sudo ln -s /etc/apache2/sites-available/[DOMAINNAME] /etc/apache2/sites-enabled
+    sudo ln -s /etc/apache2/sites-available/[DOMAINNAME].conf /etc/apache2/sites-enabled
 
     sudo service apache2 restart
 

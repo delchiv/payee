@@ -44,6 +44,6 @@ Ubuntu server 14.04.2 LTS
 6. Setting up libraries for python
 
     sudo apt-get install python-pip python-virtualenv
-    sudo apt-get install autoconf g++ python2.7-dev, libpq-dev
+    sudo apt-get install autoconf g++ python2.7-dev libpq-dev
     sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
     sudo apt-get install libxml2-dev libxslt1-dev python-dev lib32z1-dev python-lxml
