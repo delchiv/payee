@@ -1,0 +1,33 @@
+<VirtualHost *:80>
+#    ServerAdmin [ADMIN E-MAIL]
+
+#    ServerAlias [DOMAINNAME]
+    DocumentRoot /home/[USERNAME]/sites/[DOMAINNAME]
+
+    ErrorLog /home/[USERNAME]/sites/[DOMAINNAME]/log/apache-error.log
+    CustomLog /home/[USERNAME]/sites/[DOMAINNAME]/log/apache-access.log combined
+
+    Alias /static /home/[USERNAME]/sites/[DOMAINNAME]/static
+    <Directory /home/[USERNAME]/sites/[DOMAINNAME]/static>
+        Require all granted
+    </Directory>
+
+    Alias /media /home/[USERNAME]/sites/[DOMAINNAME]/media
+    <Directory /home/[USERNAME]/sites/[DOMAINNAME]/media>
+        Require all granted
+    </Directory>
+
+    <Directory /home/[USERNAME]/sites/[DOMAINNAME]/src/[PROJECTNAME]>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+#    Alias /favicon.ico /home/[USERNAME]/sites/[DOMAINNAME]/static/favicon.ico
+
+
+    WSGIDaemonProcess [PROJECTNAME] python-path=/home/[USERNAME]/sites/[DOMAINNAME]:/home/[USERNAME]/sites/[DOMAINNAME]/venv/lib/python2.7/site-packages
+    WSGIProcessGroup [PROJECTNAME]
+    WSGIScriptAlias / /home/[USERNAME]/sites/[DOMAINNAME]/src/[PROJECTNAME]/wsgi.py
+
+</VirtualHost>

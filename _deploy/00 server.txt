@@ -1,0 +1,49 @@
+Ubuntu server 14.04.2 LTS
+
+1. Setting up sudo user, different from root user
+
+    sudo useradd -m -s /bin/bash [USERNAME]
+    sudo usermod -a -G sudo [USERNAME]
+    sudo passwd [USERNAME]
+
+2. Setting up Apache server
+
+    sudo apt-get update
+    sudo apt-get install apache2 libapache2-mod-wsgi
+
+3. Setting up Posgresql
+
+    sudo apt-get update
+    sudo apt-get install postgresql postgresql-contrib
+
+4. Setting up phpPgAdmin (optional)
+
+    sudo apt-get install phppgadmin
+    sudo nano /etc/apache2/apache2.conf
+
+    === add following ===
+
+        Include /etc/apache2/conf.d/phppgadmin
+
+    === add following ===
+
+    sudo nano /etc/apache2/conf.d/phppgadmin
+
+    === uncomment following ===
+
+        #  allow from all
+
+    === uncomment following ===
+
+    sudo service apache2 restart
+
+5. Setting up git    
+
+    sudo apt-get install git
+
+6. Setting up libraries for python
+
+    sudo apt-get install python-pip python-virtualenv
+    sudo apt-get install autoconf g++ python2.7-dev
+    sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
+    sudo apt-get install libxml2-dev libxslt1-dev python-dev lib32z1-dev python-lxml

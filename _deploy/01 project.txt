@@ -1,0 +1,79 @@
+0 Project overview
+
+ROOT = /home/[USERNAME]/sites/[DOMAINNAME]
+
+/home/[USERNAME]
+└── sites
+    └── [DOMAINNAME] 
+        ├── log      - apache & python logs are here
+        ├── media    - files uploaded by user are here
+        ├── src      - project source from repo (github.com checkout)
+        ├── static   - all static files collected from django project are here
+        └── venv     - virtual environment python libraries
+
+1 First time deployment
+
+1.1 Creating directories
+
+    cd /home/[USERNAME]
+    mkdir -p sites
+    cd sites
+    mkdir -p [DOMAINNAME]
+    cd [DOMAINNAME]
+    mkdir -p log
+    mkdir -p media
+    mkdir -p src
+    mkdir -p static
+
+1.2 Creating & activating virtual environment
+
+    virtualenv venv
+    source venv/bin/activate
+
+1.3 Getting latest project source from repo
+
+    cd src
+    git clone [YOUR REPO]
+
+1.4 Installing python libraries which are required
+
+    pip install -r requirements.txt
+
+1.5 Creating postgre user & database
+
+    sudo -u postgres createuser -D -A -P [DBUSERNAME]
+
+    sudo su - postgres
+    psql
+
+    CREATE DATABASE [DBNAME];
+    GRANT ALL PRIVILEGES ON DATABASE [DBNAME] TO [DBUSERNAME];
+
+    \q
+    exit
+
+1.6 Setting up django project settings
+
+    cp [PROJECTNAME]/settings.py.template [PROJECTNAME]/settings.py
+    nano [PROJECTNAME]/settings.py
+
+    *fill [VALUE]
+
+1.7 Syncing database & creating superuser
+
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py collectstatic
+
+1.8 Setting up Apache server to work with django-project
+
+    sudo cp _deploy/apache.template /etc/apache2/sites-available/[DOMAINNAME]
+    sudo nano /etc/apache2/sites-available/[DOMAINNAME]
+    *fill [VALUE]
+
+    sudo ln -s /etc/apache2/sites-available/[DOMAINNAME] /etc/apache2/sites-enabled
+
+    sudo service apache2 restart
+
+2 Renew source code from repo
+
