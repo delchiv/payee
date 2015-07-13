@@ -33,7 +33,7 @@ ROOT = /home/[USERNAME]/sites/[DOMAINNAME]
 1.3 Getting latest project source from repo
 
     cd src
-    git clone [YOUR REPO]
+    git clone [YOUR REPO] .
 
 1.4 Installing python libraries which are required
 
@@ -57,7 +57,7 @@ ROOT = /home/[USERNAME]/sites/[DOMAINNAME]
     cp [PROJECTNAME]/settings.py.template [PROJECTNAME]/settings.py
     nano [PROJECTNAME]/settings.py
 
-    *fill [VALUE]
+    *fill [VALUES]
 
 1.7 Syncing database & creating superuser
 
